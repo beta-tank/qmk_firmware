@@ -12,3 +12,46 @@ Features:
 - Via support
 - RGB underglow support
 
+# Develop
+
+## Build
+
+```
+qmk compile -kb sofle/rev1 -km via
+```
+
+## Configure main QMK upstream
+
+Add
+
+```
+git remote add upstream https://github.com/qmk/qmk_firmware.git
+```
+
+Check
+
+```
+$ git remote -v
+origin  https://github.com/<your_username>/qmk_firmware.git (fetch)
+origin  https://github.com/<your_username>/qmk_firmware.git (push)
+upstream        https://github.com/qmk/qmk_firmware.git (fetch)
+upstream        https://github.com/qmk/qmk_firmware.git (push)
+```
+
+Update
+
+```
+git checkout master
+git fetch upstream
+git pull upstream master
+git push origin master
+```
+
+Create new branch
+
+```
+git checkout -b dev_branch
+git push -u origin dev_branch
+```
+
+
