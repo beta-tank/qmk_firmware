@@ -14,6 +14,14 @@ Features:
 
 # Develop
 
+## Bootloader
+
+
+Alvaro
+```
+BOOTLOADER = atmel-dfu
+```
+
 ## Build
 
 ```
