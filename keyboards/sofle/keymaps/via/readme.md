@@ -28,6 +28,14 @@ BOOTLOADER = atmel-dfu
 qmk compile -kb sofle/rev1 -km via
 ```
 
+## Add more layers
+
+Guide: https://www.reddit.com/r/MechanicalKeyboards/comments/mq3n12/via_how_to_add_more_than_4_layers/
+
+## Reset VIA EEPROM
+
+Hold upper-left (0,0) button when power up.
+
 ## Configure main QMK upstream
 
 Add
