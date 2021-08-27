@@ -61,7 +61,7 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("Ajust"), false);
             break;
         case 4:
-            oled_write_P(PSTR("Gaming\n"), false);
+            oled_write_P(PSTR("GAME\n"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef\n"), false);
