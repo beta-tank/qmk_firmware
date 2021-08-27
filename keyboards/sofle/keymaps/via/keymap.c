@@ -114,18 +114,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-------+------+------+------+------+------|                     |------+------+------+------+------+---------|
  * |  Tab  |LSHIFT|   A  |   S  |   D  |   F  |-------.    ,--------|   H  |   J  |   K  |   L  |   ;  | '(Ctrl) |
  * |-------+------+------+------+------+------| MUTE  |    |        |------+------+------+------+------+---------|
- * |  V    | LAlt |   Z  |   X  |   C  |   G  |-------|    |--------|   N  |   M  |   ,  |   .  |   /  | \(RAlt) |
+ * |  V    | LAlt |   Z  |   X  |   C  |   G  |-------|    |--------|  F2  |  F11 |   ,  |   .  |   /  | \(RAlt) |
  * `------------------------------------------/       /     \       \-------------------------------------------'
- *           |   6   |   5   |   Q   |    E    |  4  /       \ ESC  \  | BckSP  | DEL  | RAlt | RGUI |
+ *           |   6   |   5   |   Q   |    E    |  4  /       \ OFF  \  | LSHIFT | LAlt | RAlt | RGUI |
  *           `------------------------------------'           '-------''------------------------------'
  */
 
 [_GAMING] = LAYOUT(
-  KC_ESC,      KC_1,      KC_2,    KC_5,    KC_6,    KC_4,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_RBRC,
-  TG(_GAMING), KC_RBRC,   KC_LCTL, KC_W,    KC_SPC,  KC_R,                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,
-  KC_TAB,      KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,                                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  RCTL_T(KC_QUOT),
-  KC_V,        KC_LALT,   KC_Z,    KC_X,    KC_C,    KC_G, KC_MUTE,               XXXXXXX,KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RALT_T(KC_BSLS),
-  KC_6,        KC_5,      KC_Q,    KC_E,    KC_4,                                 TG(_GAMING), TG(_GAMING), TG(_GAMING), KC_RALT, KC_RGUI
+  KC_ESC,      KC_1,      KC_2,    KC_5,    KC_6,    KC_4,                                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_RBRC,
+  TG(_GAMING), KC_RBRC,   KC_LCTL, KC_W,    KC_SPC,  KC_R,                                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,
+  KC_TAB,      KC_LSFT,   KC_A,    KC_S,    KC_D,    KC_F,                                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  RCTL_T(KC_QUOT),
+  KC_V,        KC_LALT,   KC_Z,    KC_X,    KC_C,    KC_G, KC_MUTE,               XXXXXXX,     KC_F2,   KC_F11,  KC_COMM, KC_DOT,  KC_SLSH,  RALT_T(KC_BSLS),
+                          KC_6,    KC_5,    KC_Q,    KC_E, KC_4,                  TG(_GAMING), KC_LSFT, KC_LALT, KC_RALT, KC_RGUI
 )
 };
 
