@@ -99,14 +99,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 [_ADJUST] = LAYOUT_symmetric(
   _______, _______, _______, _______, _______, _______, 
-  RESET,   XXXXXXX, BL_INC,  RGB_VAI, RGB_HUD, RGB_HUI,
-  DEBUG,   XXXXXXX, BL_DEC,  RGB_VAD, RGB_SAD, RGB_SAI,
-  XXXXXXX, BL_BRTG, BL_TOGG, RGB_TOG, RGB_RMOD,RGB_MOD, _______,
+  RESET,   XXXXXXX, RGB_SPI,  RGB_VAI, RGB_HUI, RGB_SAI,
+  DEBUG,   XXXXXXX, RGB_SPD,  RGB_VAD, RGB_HUD, RGB_SAD,
+  XXXXXXX, RGB_MODE_GRADIENT, RGB_MODE_PLAIN, RGB_TOG, RGB_RMOD,RGB_MOD, _______,
                     _______, _______, _______, _______, _______
 
 ),
 /*
- * QWERTY
+ * R6 Siege
  * ,------------------------------------------.                     ,--------------------------------------------.
  * |  ESC  |   1  |   2  |   5  |   6  |   4  |                     |   6  |   7  |   8  |   9  |   0  |    ]    |
  * |-------+------+------+------+------+------|                     |------+------+------+------+------+---------|
