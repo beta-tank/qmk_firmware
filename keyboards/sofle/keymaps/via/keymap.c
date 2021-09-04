@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, 
   RESET,   XXXXXXX, RGB_SPI,  RGB_VAI, RGB_HUI, RGB_SAI,
   DEBUG,   XXXXXXX, RGB_SPD,  RGB_VAD, RGB_HUD, RGB_SAD,
-  XXXXXXX, RGB_MODE_GRADIENT, RGB_MODE_PLAIN, RGB_TOG, RGB_RMOD,RGB_MOD, _______,
+  RGB_MODE_GRADIENT, RGB_MODE_TWINKLE, RGB_MODE_PLAIN, RGB_TOG, RGB_RMOD,RGB_MOD, _______,
                     _______, _______, _______, _______, _______
 
 ),
