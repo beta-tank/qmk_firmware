@@ -133,3 +133,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
+
+// Animate tap
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef OLED_DRIVER_ENABLE
+    // Check if non-mod
+    if ((keycode >= KC_A && keycode <= KC_0) || (keycode >= KC_TAB && keycode <= KC_SLASH)) {
+        if (record->event.pressed) {
+            // Display tap frames
+            tap_anim_toggle = !tap_anim_toggle;
+            #ifdef USE_OLED_BITMAP_COMPRESSION
+            oled_write_compressed_P(tap_block_map[tap_anim_toggle], tap_frames[tap_anim_toggle]);
+            #else
+            oled_write_raw_P(tap_frames[tap_anim_toggle], NUM_OLED_BYTES);
+            #endif
+        }
+    }
+    #endif
+    return true;
+}
