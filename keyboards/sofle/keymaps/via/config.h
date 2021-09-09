@@ -38,3 +38,5 @@ for more options.
 #define RGBLIGHT_VAL_STEP 12
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
+#define TAPPING_FORCE_HOLD
