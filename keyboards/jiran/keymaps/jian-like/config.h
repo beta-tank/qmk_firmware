@@ -2,3 +2,5 @@
 #pragma once
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
+
+#define TAPPING_FORCE_HOLD
