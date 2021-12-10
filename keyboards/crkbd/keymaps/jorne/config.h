@@ -1,9 +1,6 @@
 /*
 This is the c configuration file for the keymap
 
-Copyright 2012 Jun Wako <wakojun@gmail.com>
-Copyright 2015 Jack Humbert
-
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -20,18 +17,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
-
 /* Select hand configuration */
 
-// #define MASTER_LEFT
+#define MASTER_LEFT
 // #define MASTER_RIGHT
-#define EE_HANDS
-
-#define SSD1306OLED
-#define USE_SSD_I2C
-
-#define USE_SERIAL_PD2
+// #define EE_HANDS
 
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
@@ -48,5 +38,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_SAT_STEP  17
 #    define RGBLIGHT_VAL_STEP  17
 #endif
-
-//#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"

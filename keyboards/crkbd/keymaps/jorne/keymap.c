@@ -1,6 +1,4 @@
 /*
-Copyright 2019 @foostan
-Copyright 2020 Drashna Jaelre <@drashna>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,10 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include <stdio.h>
-#ifdef PROTOCOL_LUFA
-  #include "lufa.h"
-  #include "split_util.h"
-#endif
 #ifdef SSD1306OLED
   #include "ssd1306.h"
 #endif
@@ -78,12 +72,6 @@ const keypos_t hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 #define SH_TG KC_TRNS
 #endif
 
-#ifdef RGBLIGHT_ENABLE
-//Following line allows macro to read current RGB settings
-extern rgblight_config_t rgblight_config;
-#endif
-
-extern uint8_t is_master;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -105,7 +93,6 @@ enum custom_keycodes {
   RAISE,
   ADJUST,
   BACKLIT,
-  RGBRST,
   KC_SAMPLEMACRO,
   PLOVER,
   EXT_PLV
@@ -183,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_ADJUST] = LAYOUT(\
-  RESET,   RGBRST,  KC_ASUP, KC_ASTG, KC_ASDN, _______, _______,      _______, _______,  KC_ASDN, KC_ASTG, KC_ASUP, RGBRST,   RESET, \
+  RESET,   _______,  KC_ASUP, KC_ASTG, KC_ASDN, _______, _______,      _______, _______,  KC_ASDN, KC_ASTG, KC_ASUP, _______,  RESET, \
            RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, QWERTY,  PLOVER,       PLOVER,  QWERTY,  RGB_VAI, RGB_SAI, RGB_HUI, RGB_TOG, \
            RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, TG_ISO,  TG_THMB,      TG_THMB, TG_ISO,  RGB_VAD, RGB_SAD, RGB_HUD, RGB_MOD, \
                                       _______, SH_TG,   _______,      _______, SH_TG,   _______\
@@ -210,28 +197,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-int RGB_current_mode;
 
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
 }
 
-// Setting ADJUST layer RGB back to default
-void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
-    layer_on(layer3);
-  } else {
-    layer_off(layer3);
-  }
-}
-
-void matrix_init_user(void) {
-    #ifdef RGBLIGHT_ENABLE
-      RGB_current_mode = rgblight_config.mode;
-      rgblight_step();
-    #endif
-}
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 #ifdef OLED_ENABLE
@@ -242,22 +213,8 @@ const char *read_logo(void);
 void set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
 const char *read_keylogs(void);
-// void matrix_write_ln(struct CharacterMatrix *matrix, const char *data);
-// void oled_write(struct CharacterMatrix *matrix, const char *data);
-// void matrix_scan_user(void) {
-//    oled_task();
-// }
-
-
-// void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *source) {
-//   if (memcmp(dest->display, source->display, sizeof(dest->display))) {
-//     memcpy(dest->display, source->display, sizeof(dest->display));
-//     dest->dirty = true;
-//   }
-// }
 
 bool oled_task_user(void) {
-//   struct CharacterMatrix matrix;
     if (is_keyboard_master()) {
         // If you want to change the display of OLED, you need to change here
         oled_write_ln(read_layer_state(), false);
@@ -267,16 +224,14 @@ bool oled_task_user(void) {
         oled_write(read_logo(), false);
     }
     return true;
-//   matrix_update(&display, &matrix);
 }
-#endif//OLED_ENABLE
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef OLED_ENABLE
     set_keylog(keycode, record);
 #endif
-    // set_timelog();
   }
 
   switch (keycode) {
@@ -289,20 +244,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
         layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
       return false;
       break;
@@ -314,21 +265,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
         break;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      break;
   }
   return true;
 }
-
-// void led_set_user(uint8_t usb_led) {
-//     if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
-//         // reset_keyboard(); // reset keyboard on capslock (for debugging)
-//     }
-// }
