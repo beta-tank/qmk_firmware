@@ -24,9 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
+// #define MASTER_LEFT
 // #define MASTER_RIGHT
-// #define EE_HANDS
+#define EE_HANDS
+
+#define SSD1306OLED
+#define USE_SSD_I2C
+
+#define USE_SERIAL_PD2
 
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
@@ -44,4 +49,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_VAL_STEP  17
 #endif
 
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+//#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
