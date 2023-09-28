@@ -69,10 +69,10 @@ static void print_status_narrow(void) {
         case 6:
             oled_write_P(PSTR("G2\n"), false);
             break;
+        // case 7:
+        //     oled_write_P(PSTR("G3\n"), false);
+        //     break;
         case 7:
-            oled_write_P(PSTR("G3\n"), false);
-            break;
-        case 8:
             oled_write_P(PSTR("Adgust\n"), false);
             break;
         default:

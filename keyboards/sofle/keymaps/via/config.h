@@ -20,7 +20,6 @@
 /* By default left side is selected as master,
 see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 for more options. */
-
 //Add RGB underglow
 #define RGB_DI_PIN D3
 #define RGBLED_NUM 70
@@ -36,6 +35,6 @@ for more options. */
 #define RGBLIGHT_SAT_STEP 12
 #define RGBLIGHT_VAL_STEP 12
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 
 #define TAPPING_FORCE_HOLD

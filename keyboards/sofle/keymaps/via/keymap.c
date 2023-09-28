@@ -25,9 +25,9 @@ enum sofle_layers {
   _BBSECOND,
   _R6,
   _GAME1,
-  _GAME2,
-  _GAME3,
-  _ADJUST,
+//   _GAME2,
+//   _GAME3,
+//   _ADJUST,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT(
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     RGUI_T(KC_RBRC),
   KC_GRV,   KC_Q,   KC_W,    TG(_OVERWATCH),    TG(_BATTLEBIT),    TG(_R6),                                KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,
-  KC_LCTL,  KC_A,   KC_S,    TG(_GAME3),    TG(_GAME2),    TG(_GAME1),                                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  RCTL_T(KC_QUOT),
+  KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    TG(_GAME1),                                KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  RCTL_T(KC_QUOT),
   KC_LALT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, C(KC_M),               XXXXXXX,KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RALT_T(KC_BSLS),
-  KC_LGUI, KC_LALT, KC_TAB, MO(_ADJUST), KC_ENT,      KC_ESC, RSFT_T(KC_BSPC), KC_DEL, KC_RALT, KC_RGUI
+  KC_LGUI, KC_LALT, KC_TAB, KC_LSFT, KC_ENT,      KC_ESC, RSFT_T(KC_BSPC), KC_DEL, KC_RALT, KC_RGUI
 ),
 /* LOWER
  * ,------------------------------------------.                    ,--------------------------------------------.
@@ -131,32 +131,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_COMM, KC_A, KC_S, KC_D,  KC_F,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
   KC_LALT, KC_LCTL, KC_Z,   KC_X,  KC_L,    KC_G,  _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
                     KC_M, KC_N, KC_H, KC_SPC, KC_F4,       _______, _______, _______, _______, _______
-),
-[_GAME2] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  RGUI_T(KC_F12),
-  TG(_GAME2), KC_DOT,   KC_Q,   KC_W,   KC_E,   KC_R,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-  KC_TAB,  KC_COMM, KC_A, KC_S, KC_D,  KC_F,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
-  KC_LALT, KC_LCTL, KC_Z,   KC_X,  KC_L,    KC_G,  _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-                    KC_M, KC_N, KC_H, KC_SPC, KC_F4,       _______, _______, _______, _______, _______
-),
-[_GAME3] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  RGUI_T(KC_F12),
-  TG(_GAME3), KC_DOT,   KC_Q,   KC_W,   KC_E,   KC_R,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-  KC_TAB,  KC_COMM, KC_A, KC_S, KC_D,  KC_F,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
-  KC_LALT, KC_LCTL, KC_Z,   KC_X,  KC_L,    KC_G,  _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-                    KC_M, KC_N, KC_H, KC_SPC, KC_F4,       _______, _______, _______, _______, _______
-),
-[_ADJUST] = LAYOUT_symmetric(
-  _______, _______, _______, _______, _______, _______,
-  RESET,   TG(_R6), RGB_SPI,  RGB_VAI, RGB_HUI, RGB_SAI,
-  DEBUG,   XXXXXXX, RGB_SPD,  RGB_VAD, RGB_HUD, RGB_SAD,
-  RGB_MODE_GRADIENT, RGB_MODE_TWINKLE, RGB_MODE_PLAIN, RGB_TOG, RGB_RMOD,RGB_MOD, _______,
-                    _______, _______, _______, _______, _______
-
 )
+// [_GAME2] = LAYOUT(
+//   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  RGUI_T(KC_F12),
+//   TG(_GAME2), KC_DOT,   KC_Q,   KC_W,   KC_E,   KC_R,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+//   KC_TAB,  KC_COMM, KC_A, KC_S, KC_D,  KC_F,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
+//   KC_LALT, KC_LCTL, KC_Z,   KC_X,  KC_L,    KC_G,  _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+//                     KC_M, KC_N, KC_H, KC_SPC, KC_F4,       _______, _______, _______, _______, _______
+// ),
+// [_GAME3] = LAYOUT(
+//   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  RGUI_T(KC_F12),
+//   TG(_GAME3), KC_DOT,   KC_Q,   KC_W,   KC_E,   KC_R,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+//   KC_TAB,  KC_COMM, KC_A, KC_S, KC_D,  KC_F,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
+//   KC_LALT, KC_LCTL, KC_Z,   KC_X,  KC_L,    KC_G,  _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+//                     KC_M, KC_N, KC_H, KC_SPC, KC_F4,       _______, _______, _______, _______, _______
+// ),
+// [_ADJUST] = LAYOUT(
+//   _______, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______,  RGUI_T(KC_F12),
+//   QK_RBT,   TG(_R6), RGB_SPI,  RGB_VAI, RGB_HUI, RGB_SAI,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+//   DB_TOGG,   XXXXXXX, RGB_SPD,  RGB_VAD, RGB_HUD, RGB_SAD,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, RCTL_T(KC_MINS),
+//   RGB_MODE_GRADIENT, RGB_MODE_TWINKLE, RGB_MODE_PLAIN, RGB_TOG, RGB_RMOD,RGB_MOD, _______,                   _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+//                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+// )
 };
 
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _OVERWATCH, _BATTLEBIT, _ADJUST);
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//   return update_tri_layer_state(state, _OVERWATCH, _BATTLEBIT, _ADJUST);
+// }
