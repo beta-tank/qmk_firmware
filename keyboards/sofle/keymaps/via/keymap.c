@@ -17,7 +17,6 @@
 
 #include QMK_KEYBOARD_H
 #include "oled.c"
-#include "encoder.c"
 
 enum sofle_layers {
   _QWERTY,
